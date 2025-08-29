@@ -1,0 +1,60 @@
+name: Autograding Tests
+'on':
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 9.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Adder
+      id: adder
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Adder
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet test --filter TestGroup=Adder
+        timeout: 10
+        max-score: 25
+    - name: Hello World
+      id: hello-world
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Hello World
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet test --filter TestGroup=HelloWorld
+        timeout: 10
+        max-score: 25
+    - name: Console IO
+      id: console-io
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Console IO
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Assignment
+        input: ''
+        expected-output: Hello, World!
+        comparison-method: exact
+        timeout: 10
+        max-score: 50
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        ADDER_RESULTS: "${{steps.adder.outputs.result}}"
+        HELLO-WORLD_RESULTS: "${{steps.hello-world.outputs.result}}"
+        CONSOLE-IO_RESULTS: "${{steps.console-io.outputs.result}}"
+      with:
+        runners: adder,hello-world,console-io
