@@ -17,9 +17,22 @@ result in a failing grade.
 
 ### Exercise 3 (10 Points)
 1. Create a new .NET Console App project titled `Exercise3` and add it to the Assignment.sln solution. The project must be placed in the same folder as the Assignment.sln file.
-2. Create 5 variables: an int, a double, a decimal, a char, and a string
+2. Output 4 lines to the cosole displaying the following text, replacing the text in `{}` with the correct values (be sure to match everything exactly, including case and spacing):
+```
+Int info: size={size of int} bytes, max={max value of int formatted in scientific notation to 3 decimal points}, min={min value of int formatted in scientific notation to 3 decimal points}
+Long info: size={size of long} bytes, max={max value of long formatted in scientific notation to 3 decimal points}, min={min value of long formatted in scientific notation to 3 decimal points}
+Double info: size={size of double} bytes, max={max value of double formatted in scientific notation to 3 decimal points}, min={min value of double formatted in scientific notation to 3 decimal points}
+Decimal info: size={size of decimal} bytes, max={max value of decimal formatted in scientific notation to 3 decimal points}, min={min value of decimal formatted in scientific notation to 3 decimal points}
+```
+NOTE: The `e` in scientific notation must be lower case, and 3 digits must be used for the exponent (including leading zeros).
 
 ### Exercise 4 (20 Points)
 1. Create a new .NET Console App project titled `Exercise4` and add it to the Assignment.sln solution. The project must be placed in the same folder as the Assignment.sln file.
-2. Write an application that expects 3 command-line arguments
+2. Write an application that expects 5 command-line arguments:
+   - First Name
+   - Last Name
+   - Age
+   - Name of an item
+   - Number of item
+3. 
 
