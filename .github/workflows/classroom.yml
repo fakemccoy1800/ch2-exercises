@@ -20,41 +20,109 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Adder
-      id: adder
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: Adder
-        setup-command: ''
-        command: DOTNET_CLI_HOME=/home/runner dotnet test --filter TestGroup=Adder
-        timeout: 10
-        max-score: 25
-    - name: Hello World
-      id: hello-world
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: Hello World
-        setup-command: ''
-        command: DOTNET_CLI_HOME=/home/runner dotnet test --filter TestGroup=HelloWorld
-        timeout: 10
-        max-score: 25
-    - name: Console IO
-      id: console-io
+    - name: Exercise 1-1
+      id: ex1-1
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: Console IO
+        test-name: Exercise 1-1
         setup-command: ''
-        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Assignment
-        input: ''
-        expected-output: Hello, World!
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise1
+        input: 1234
+        expected-output: $1,234.00
         comparison-method: exact
-        timeout: 10
-        max-score: 50
+        timeout: 1
+        max-score: 5
+    - name: Exercise 1-2
+      id: ex1-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Exercise 1-2
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise1
+        input: 56.789
+        expected-output: $56.79
+        comparison-method: exact
+        timeout: 1
+        max-score: 5
+    - name: Exercise 2-1
+      id: ex2-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Exercise 2-1
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise2
+        input: one two three
+        expected-output: 3
+        comparison-method: exact
+        timeout: 1
+        max-score: 5
+    - name: Exercise 2-2
+      id: ex2-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Exercise 2-2
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise2
+        input: arg1 arg2
+        expected-output: 2
+        comparison-method: exact
+        timeout: 1
+        max-score: 5
+    - name: Exercise 3-1
+      id: ex3-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Exercise 3-1
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise3
+        input: ''
+        expected-output: | 
+          Int info: size=4 bytes, max=2.147e+009, min=-2.147e+009
+          Long info: size=8 bytes, max=9.223e+018, min=-9.223e+018
+          Double info: size=8 bytes, max=1.798e+308, min=-1.798e+308
+          Decimal info: size=16 bytes, max=7.923e+028, min=-7.923e+028
+        comparison-method: exact
+        timeout: 1
+        max-score: 10
+    - name: Exercise 4-1
+      id: ex4-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Exercise 4-1
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise4
+        input: Mason Ruby 29 apples 8 2.99
+        expected-output: | 
+          Mason Ruby is 29 years old. Mason has 8 apples.
+          Each apples costs $2.99.
+          The total cost is $23.92
+        comparison-method: exact
+        timeout: 1
+        max-score: 10
+    - name: Exercise 4-2
+      id: ex4-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Exercise 4-2
+        setup-command: ''
+        command: DOTNET_CLI_HOME=/home/runner dotnet run --project Exercise4
+        input: Tom Holland 29 Ferraris 10 1234567.89234
+        expected-output: | 
+          Tom Holland is 29 years old. Tom has 10 Ferraris.
+          Each Ferraris costs $1,234,567.89.
+          The total cost is $12,345,678.92
+        comparison-method: exact
+        timeout: 1
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        ADDER_RESULTS: "${{steps.adder.outputs.result}}"
-        HELLO-WORLD_RESULTS: "${{steps.hello-world.outputs.result}}"
-        CONSOLE-IO_RESULTS: "${{steps.console-io.outputs.result}}"
+        EX1-1_RESULTS: "${{steps.ex1-1.outputs.result}}"
+        EX1-2_RESULTS: "${{steps.ex1-2.outputs.result}}"
+        EX2-1_RESULT: "${{steps.ex2-1.outputs.result}}"
+        EX2-2_RESULT: "${{steps.ex2-2.outputs.result}}"
+        EX3-1_RESULT: "${{steps.ex3-1.outputs.result}}"
+        EX4-1_RESULT: "${{steps.ex4-1.outputs.result}}"
+        EX4-2_RESULT: "${{steps.ex4-2.outputs.result}}"
       with:
-        runners: adder,hello-world,console-io
+        runners: ex1-1,ex1-2,ex2-1,ex2-2,ex3-1,ex4-1,ex4-2
