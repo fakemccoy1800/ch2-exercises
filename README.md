@@ -28,11 +28,17 @@ NOTE: The `e` in scientific notation must be lower case, and 3 digits must be us
 
 ### Exercise 4 (20 Points)
 1. Create a new .NET Console App project titled `Exercise4` and add it to the Assignment.sln solution. The project must be placed in the same folder as the Assignment.sln file.
-2. Write an application that expects 5 command-line arguments:
-   - First Name
-   - Last Name
+2. Write an application that expects 6 command-line arguments:
+   - First name
+   - Last name
    - Age
    - Name of an item
    - Number of item
-3. 
+   - Unit cost of item
+3. Print the following to the console, replacing the text in `{}` with the correct values:
+```
+{First name} {Last name} is {Age} years old. {First name} has {Number of items) {Name of item}.
+Each {Name of item} costs {Unit cost of item formatted in US currency}.
+The total cost is {Number of item * Unit cost of item formatted in US currency}.
+```
 
