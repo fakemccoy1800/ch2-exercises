@@ -35,7 +35,7 @@ NOTE: The `e` in scientific notation must be lower case, and 3 digits must be us
    - Name of an item
    - Number of item
    - Unit cost of item
-3. Print the following to the console, replacing the text in `{}` with the correct values:
+3. Output 3 lines to the console displaying the following text, replacing the text in `{}` with the correct values:
 ```
 {First name} {Last name} is {Age} years old. {First name} has {Number of items} {Name of item}.
 Each {Name of item} costs {Unit cost of item formatted in US currency}.
