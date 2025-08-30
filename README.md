@@ -37,7 +37,7 @@ NOTE: The `e` in scientific notation must be lower case, and 3 digits must be us
    - Unit cost of item
 3. Print the following to the console, replacing the text in `{}` with the correct values:
 ```
-{First name} {Last name} is {Age} years old. {First name} has {Number of items) {Name of item}.
+{First name} {Last name} is {Age} years old. {First name} has {Number of items} {Name of item}.
 Each {Name of item} costs {Unit cost of item formatted in US currency}.
 The total cost is {Number of item * Unit cost of item formatted in US currency}.
 ```
